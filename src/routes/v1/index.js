@@ -6,7 +6,9 @@ const depositRoute = require('./depositRoute.js');
 const withdrawRoute = require('./withdrawRoute.js');
 const fundTransferRoute = require('./fundtransferRoute');
 const verifyKycRoute = require('./verifyKyc.route');
+const transactionHistoryRoute = require('./transactionhistoryRoute')
 const config = require('../../config/config');
+
 
 const router = express.Router();
 
@@ -34,6 +36,10 @@ const defaultRoutes = [
   {
     path: '/verify',
     route: verifyKycRoute,
+  },
+  {
+    path: '/transactions',
+    route: transactionHistoryRoute,
   },
 ];
 

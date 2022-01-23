@@ -1,11 +1,9 @@
 const express = require("express");
 const moment = require("moment");
-const Accounts = require("../../models/accounts");
-const Transactions = require("../../models/transactions");
 const router = express.Router();
-
+const { User, Transactions } = require('../../models');
 router.get("/", (req, res) => {
-  Accounts.find({}, (err, accounts) => {
+  User.find({}, (err, accounts) => {
     if (err) {
       console.log(err);
     } else {
@@ -20,11 +18,6 @@ router.get("/", (req, res) => {
             };
           });
           console.log("modified trans:", transactions);
-          res.render("transactionhistory.pug", {
-            title: "Transaction History | Express Wallet",
-            accounts,
-            transactions
-          });
         }
       });
     }
