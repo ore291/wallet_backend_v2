@@ -11,6 +11,9 @@ router.post("/", (req, res) => {
       return res.status(400).json({ msg: err })
     }
 
+    if (parseFloat(user.balance) < parseFloat(req.body.amount)) {
+      return res.status(400).json({ msg: 'insufficient acount Balance' });
+    }
 
 
     crypt.compare(req.body.password, user.password, (err, match) => {
